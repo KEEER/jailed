@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jailed | KEEER</title>
+  </head>
+  <body>
+    KEEER's shared <a href="https://github.com/asvd/jailed" target="_blank">Jailed</a> instance.
+    Open console to see what's going on.
+    <a href="https://keeer.net/labs/">Back to Labs</a>
+    <script src="/jailed.js"></script>
+    <script>
+    const script = `
+    api(2);
+    log("中文");
+    alert(/xss/);
+    `;
+    const p = new jailed.DynamicPlugin(script, {
+      console,
+      log: a => console.log(a),
+      api: a => console.warn(a)
+    });
+    </script>
+  </body>
+</html>
